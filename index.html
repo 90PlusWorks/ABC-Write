@@ -12,7 +12,6 @@
 
   <link rel="stylesheet" href="css/easywriteold.css">
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-  <script src="js/AC_QuickTime.js" type="text/javascript"></script>
 
 <script>src="js/math.js"</script>
     <style>
@@ -69,7 +68,7 @@ var ctx = c.getContext("2d"); //the draw/write area
 
 
 <div class="display-pad" id="display-pad" style = "position = relative; overflow = auto;
-background: #f00;">
+background: #fff;">
 
 <canvas class = "containB" id="mydisplay" width= 100% style = "overflow = auto; background-color: transparent;margin: 0;padding: 0;">
     
@@ -104,15 +103,8 @@ var ctx2 = c2.getContext("2d");
 <button id = "button1" onclick="copyme()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;" >Copy</button>
 <button id = "button2" onclick="hide()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;" >Options</button>
 <button id = "button3" onclick="hide2()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;" >Help</button><br><br>.....
-  <video id = "video_player" autoplay muted playsinline loop width="90"  src="a/outa.mp4" type="video/mp4""></video>
-<video id = "video_player2" controls="true" autoplay muted loop playsinline>
-                                       <source id="ss" src = "https://90plusworks.github.io/ABC-Write/a/outa.webm" type="video/mp4">
-                                       <source id="ss" src = "https://90plusworks.github.io/ABC-Write/a/outa.webm" type="video/webm">
-                                       <source id="ss" src = "https://90plusworks.github.io/ABC-Write/a/outa.mov" type="video/mov">
-  <script type="text/javascript">
-           QT_WriteOBJECT('https://90plusworks.github.io/ABC-Write/a/outa.mov' , '200', '200', '');
-       </script>
-</video>
+<img id = "animated-image" src = "a/frame000.png"></img><br>
+
 
 <div id="instructions">
 
