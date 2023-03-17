@@ -1,15 +1,15 @@
-const vidListx = ["a/outa.webm","a/outb.mp4","a/outc.mp4","a/outd.mp4",
-"a/oute.mp4","a/outf.mp4","a/outg.mp4","a/outh.mp4","a/outi.mp4","a/outj.mp4",
-"a/outk.mp4","a/outl.mp4","a/outm.mp4","a/outn.mp4","a/outo.mp4","a/outp.mp4",
-"a/outq.mp4","a/outr.mp4","a/outs.mp4","a/outt.mp4","a/outu.mp4","a/outv.mp4",
-"a/outw.mp4","a/outx.mp4","a/outy.mp4","a/outz.mp4"];
-console.log(vidListx[0]);
+const abcList = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const numLet = [20,17,10,19,18,15,25,20,9,14,19,13,31,19,19,32,31,17,23,18,24,16,26,20,19,13];
+const imagesList = ["/frame000.png", "/frame001.png", "/frame002.png", "/frame003.png", "/frame004.png", "/frame005.png", "/frame006.png", "/frame007.png", "/frame008.png", "/frame009.png", "/frame010.png","/frame011.png", "/frame012.png", "/frame013.png", "/frame014.png", "/frame015.png", "/frame016.png", "/frame017.png", "/frame018.png", "/frame019.png", "/frame020.png", "/frame021.png", "/frame022.png", "/frame023.png", "/frame024.png", "/frame025.png", "/frame026.png", "/frame027.png", "/frame028.png","/frame029.png", "/frame030.png", "/frame031.png",, "/frame032.png"];
+let vidNum = 0;
+var currentIndex = 0;
+var animatedImage = document.getElementById("animated-image");
 var screenWidth = window.screen.availWidth;
 var screenHeight = window.screen.availHeight;
 var screenHeight2 = window.innerHeight;
-var videox = document.getElementById("video_player");
+//var videox = document.getElementById("video_player");
 
-videox.muted = true;
+//videox.muted = true;
 
 var wrapper = document.getElementById("signature-pad");//where we write
 
@@ -54,20 +54,40 @@ var ypos = 0;
 ctx.lineWidth = lineW;
 ctx.strokeStyle = "lightcyan";
 
-
+var IDsetI = null;
  
-let vidNum = 1;
 
+IDsetI = window.setInterval(animate, 100);
+//console.log(IDsetI+" id to  stop");
+
+
+function animateOver() {
+  if (IDsetI == 1){
+    window.clearInterval(IDsetI);
+    currentIndex=0;
+  } else{
+    currentIndex=0;
+    IDsetI = window.setInterval(animate, 100);
+  }
+  
+}
+//setInterval(animate, 100);
+function animate() {
+        currentIndex++;
+        if (currentIndex >= numLet[vidNum]) {
+          currentIndex = 0;
+          console.log(IDsetI+" idnow to  stop")
+          //window.clearInterval(IDsetI);
+        }
+        animatedImage.src = abcList[vidNum]+imagesList[currentIndex];
+      }
 
 function handler() {
-  var stringme = (vidListx[vidNum]);
-  console.log(stringme);
-  document.getElementById("video_player").innerHTML = "<source id='ss' src = " + stringme + "></source>";
-  videox.pause();
+  window.clearInterval(IDsetI);
+  IDsetI = window.setInterval(animate, 100); // Change image every .1 second
+
 	vidNum = vidNum +1;
-	if(vidNum==26){vidNum=0;}
-videox.load();
-videox.play();    
+	if(vidNum>25){vidNum=0;}
 }
 
 function hide() {
@@ -403,7 +423,24 @@ document.getElementById('text').addEventListener('keyup', function() {
   tCtx.canvas.width = 300; 
   tCtx.fillText(this.value, 0, 10);
 }, false);
-
-
-
-
+//load a sprite sheet and animate this?
+function cropImage(imagePath, downloadName, newX, newY, newWidth, newHeight) {
+    const originalImage = new Image();
+    originalImage.src = imagePath;
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    originalImage.addEventListener('load', function() {
+        
+        const originalWidth = originalImage.naturalWidth;
+        const originalHeight = originalImage.naturalHeight;
+        const aspectRatio = originalWidth/originalHeight;
+        if(newHeight === undefined) {
+            newHeight = newWidth/aspectRatio;
+        }
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        
+        ctx.drawImage(originalImage, newX, newY, newWidth, newHeight, 0, 0, newWidth, newHeight);
+        downloadImage(downloadName);
+    });
+}
