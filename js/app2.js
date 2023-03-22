@@ -1,5 +1,3 @@
-var myScreenOrientation = window.screen.orientation;
-myScreenOrientation.lock("portrait");
 const abcList = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 const numLet = [20,17,10,19,18,15,25,20,9,14,19,13,31,19,19,32,31,17,23,18,24,16,26,20,19,13];
 const imagesList = ["/frame000.png", "/frame001.png", "/frame002.png", "/frame003.png", "/frame004.png", "/frame005.png", "/frame006.png", "/frame007.png", "/frame008.png", "/frame009.png", "/frame010.png","/frame011.png", "/frame012.png", "/frame013.png", "/frame014.png", "/frame015.png", "/frame016.png", "/frame017.png", "/frame018.png", "/frame019.png", "/frame020.png", "/frame021.png", "/frame022.png", "/frame023.png", "/frame024.png", "/frame025.png", "/frame026.png", "/frame027.png", "/frame028.png","/frame029.png", "/frame030.png", "/frame031.png",, "/frame032.png"];
