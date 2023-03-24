@@ -5,6 +5,7 @@
 }
 
 body {
+  touch-action: none;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
