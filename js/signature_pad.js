@@ -116,11 +116,11 @@ function SignaturePad(canvas, options) {
   var self = this;
   var opts = options || {};
 
-  this.velocityFilterWeight = opts.velocityFilterWeight || 0.7;
+  this.velocityFilterWeight = opts.velocityFilterWeight || 0.99;
   this.minWidth = opts.minWidth || 3.5;//theuns sets the line width
   this.maxWidth = opts.maxWidth || 4.5;//theuns
-  this.throttle = 'throttle' in opts ? opts.throttle : 25; // 16 in miliseconds
-  this.minDistance = 'minDistance' in opts ? opts.minDistance : 10; //5 in px?
+  this.throttle = 'throttle' in opts ? opts.throttle : 10; // 16 in miliseconds
+  this.minDistance = 'minDistance' in opts ? opts.minDistance : 3; //5 in px?
 
   if (this.throttle) {
     this._strokeMoveUpdate = throttle(SignaturePad.prototype._strokeUpdate, this.throttle);
@@ -129,7 +129,7 @@ function SignaturePad(canvas, options) {
   }
 
   this.dotSize = opts.dotSize || function () {
-    return (this.minWidth + this.maxWidth) / 4;
+    return (this.minWidth + this.maxWidth) / 0.5;
   };
   this.penColor = opts.penColor || 'black';
   this.backgroundColor = opts.backgroundColor || 'rgba(0,0,0,0)';
@@ -532,7 +532,7 @@ SignaturePad.prototype._toSVG = function () {
   var canvas = this._canvas;
   var ratio = Math.max(window.devicePixelRatio || 1, 1);//theuns
   var minX = 0;
-  var minY = 200;
+  var minY = 0;
   var maxX = canvas.width / ratio;
   var maxY = canvas.height / ratio;
   var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
