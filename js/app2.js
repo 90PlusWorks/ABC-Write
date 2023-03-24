@@ -84,6 +84,7 @@ function animate() {
 
 function handler() {
   window.clearInterval(IDsetI);
+  document.getElementById("sound").src = "sounds/"+abcList[vidNum+1]+".mp3";
   IDsetI = window.setInterval(animate, 100); // Change image every .1 second
 
 	vidNum = vidNum +1;
