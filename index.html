@@ -2,181 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ABC-Write</title>
-  <meta name="description" content="Easy Writer - HTML5 canvas based writer.">
+  <title>Easy peasy writer</title>
+  <meta name="description" content="Easy Writer - HTML5 canvas based writer and pattern practice.">
 
   <meta name="viewport" id='btnClick' content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
- <link rel="icon" href="data:,">
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <link rel="stylesheet" href="css/easywriteold.css">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-
-<script>src="js/math.js"</script>
-    <style>
-      #videoC {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 10%;
-        height: 10%;
-      }
-      #signature-pad {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-      }
-    </style>
-
-    
-
-
+  <style>
+h1 {text-align: center;}
+p {text-align: center;}
+</style>
 
 </head>
-<body onselectstart="return false" style = "margin: 0;padding: 0;" >
+<h1 style="color:yellow;font-size:30px;font-family: 'comic sans ms';">This is an effective way to learn<br> and keep record of your progress<br> when you learn to write. <br>
+Click on an image to start!</h1> 
 
+<body style = "background-color: #335;" onselectstart="return false" style = "margin: 0;padding: 0;" >
+  <center> 
+<a href="indexPat.html"><img src="images/patternss.png"></a>.................
+<a href="index4.html"><img src="images/ABCs.png"></a><br><br><br>
+ </center>
 
-
-
-
-
-  <div id="signature-pad" class="signature-pad">
+<a href="https://github.com/90PlusWorks/ABC-Write"><p style="color:yellow;font-size:20px;font-family: 'comic sans ms';">Free and open source software at:<br> https://github.com/90PlusWorks/ABC-Write</p></a>
     
-
-    <div id="signature-pad" class="signature-pad--body" >
-        
-      
-      
-
-<canvas id="myCanvas" width=100% height=100% style= "position: absolute;top: 0; overflow: hidden; border:1px solid #fff; background-color: transparent;margin: 0;padding: 0; ">
-
-
-  
-
-Your browser does not support the HTML5 canvas tag.</canvas>
-<script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d"); //the draw/write area
-</script>
-
-    </div>
-
-
-
-<div class="display-pad" id="display-pad" style = "position = relative; overflow = auto;
-background: #fff;">
-
-<canvas class = "containB" id="mydisplay" width= 100% style = "overflow = auto; background-color: transparent;margin: 0;padding: 0;">
-    
-
-
-
-Your browser does not support the HTML5 canvas tag.</canvas>
-
-<script>
-var c2 = document.getElementById("mydisplay");
-var scroll = c2.scrollTop;
-c2.width  = window.innerWidth;
-c2.height = window.innerHeight*6;
-var ctx2 = c2.getContext("2d");
-</script>
-
-</div>
-
-</div>
-
-   
-</div>
-
-<div id = "hide3" style = "height: 1px; 
-        background-color: #fff;
-        position: absolute;
-        top: 0; 
-        width: 100%; 
-        margin: 0; 
-        padding: 0;">
-<button id = "button1" onclick="copyme()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0; font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #0A0; border: 3pt ridge lightgrey;">Copy</button>
-<button id = "button2" onclick="hide()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #00A; border: 3pt ridge lightgrey;" >Options</button>
-<button id = "button3" onclick="hide2()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #A00; border: 3pt ridge lightgrey;" >Help</button><br><br>.....
-<img id = "animated-image" src = "a/frame000.png"></img><br>
-
-
-<div id="instructions">
-
-<div id = "hide" style = "width: 20px; 
-        background-color: #fff;
-        position: absolute;
-        left: 0; 
-        height: 100%; 
-        display: none;
-        margin: 0; 
-        padding: 0;">
-  <textarea id='text' text-size-adjust=none display=none style = "display:inline-block;"></textarea>  
-            <canvas id='textCanvas' height=20 style = "display:inline-block;"></canvas>
-            <img src="images/S/Delete.png" onclick = "clearme()" data-action = "clear" ></img>
-           <img src="images/S/Red.png" onclick = "colorR()" ></img>
-            <img src="images/S/Orange.png" onclick = "colorO()" ></img>
-            <img src="images/S/Yellow.png" onclick = "colorY()" ></img>
-            <img src="images/S/Green.png" onclick = "colorG()" ></img>
-            <img src="images/S/Blue.png" onclick = "colorBl()" ></img>
-            <img src="images/S/Purple.png" onclick = "colorP()" ></img>
-            <img src="images/S/Black.png" onclick = "colorB()" ></img>
-           <img src="images/S/centre.png" onclick = "centre()" ></img>
-            <img src="images/S/Keep.png" onclick = "copyme()" data-action = "keep" ></img>
-            <img src="images/S/newline.png" onclick = "mynewline()" ></img>
-            <img src="images/S/Save.png" onclick = "savePDF()"></img>
-
-<script>
-    const canvastc = document.getElementById("textCanvas");
-    canvastc.style.font = canvastc.getContext("2d").font;
-    console.log(canvastc.style.font);
-    canvastc.style.fontSize = "24px arial";
-    console.log(canvastc.style.font);
-
-//canvastc.getContext("2d").font = canvastc.style.font;
-    
-    const ctxtc = canvastc.getContext("2d");
-    var cFont = ctxtc.font;
-    var fontArgs = ctxtc.font.split(' ');
-    var newSize = '24px';
-    ctxtc.font = newSize + ' ' + fontArgs[fontArgs.length - 1]; /// using the last part
-            
-            document.getElementById("text").value = ' ';
-
-           </script>
-
-        </div>
-<div id = "hide2" style = "background-color: #fff;
-        position: absolute;
-        top: 0;
-        text-align: center;
-        width: 70%; 
-        display: none;
-        margin: 20; 
-        padding: 20;"><br>
-
-  <H1 >
-  Click on the HELP button to hide this message.<br>
-  Click on the COPY button to copy your writing to the PDF.<br>
-  Click on the OPTIONS button to show or hide additional icons.<br><br>
-    Easy-peasy writing tool if you struggle with small writing. <br>
-    You write large in the blue area below and click on COPY to move the writing to the top pdf page. <br>
-    Use for class, mathematics or any other purpose. Write on your phone or tablet, then press the white check mark or Copy Button to transcribe to the pdf area. <br>
-    You can also type in the text box and submit the text using the same white check icon or the COPY button. <br> <br>
-    Use the red PDF icon to download the document in PDF to your computer.<br>
-    The White X icon deletes the current writing without transferring it to the PDF side.<br>
-    The Colour icons pick a pen colour.<br>
-    The C-target icon places the current writing on a new line on the centre of the PDF<br>
-    The NEW icon moves to a new line in the PDF.<br>
-     <br>
-  Click on the HELP button to hide this message.
-    </H1></div>
-<script src="js/signature_pad.js"></script>
-<script src="js/app2.js"></script>
 
 </body>
 
