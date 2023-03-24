@@ -1,5 +1,7 @@
 *,
-*::before,
+*::before {
+  touch-action: none;
+  }
 *::after {
   box-sizing: border-box;
 }
