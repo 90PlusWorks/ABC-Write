@@ -87,7 +87,7 @@ font-size: 10px;
   content: "";
   width: 40%;
   height: 10px;
-  bottom: 40px;
+  bottom: 20px;
   background: transparent;
   box-shadow: 0 8px 2px rgba(0, 0, 0, 0.4);
 }
@@ -130,7 +130,7 @@ canvas {
   color: #fff;
   text-align: center;
   font-size: 2.2em;
-  margin-top: 8px;
+  margin-top: 1px;
 }
 
 .signature-pad--actions {
@@ -140,7 +140,7 @@ canvas {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 8px;
+  margin-top: 1px;
 }
 .input {
   position: relative;
@@ -149,7 +149,7 @@ canvas {
   margin: 0px;
   padding: 0px;
   top: 1%;
-  transform: translateY(-50%);
+  transform: translateY(-10%);
 }
 
 .display-pad {
@@ -157,14 +157,14 @@ canvas {
   overflow: scroll;
   font-size: 10px;
   width: 100%;
-  height: 30%;
+  height: 20%;
   max-width: 100%;
-  max-height: 30%;
+  max-height: 20%;
   border: 1px solid #ff0;
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.27), 0 0 5px rgba(0, 0, 0, 0.08) inset;
   border-radius: 4px;
-  padding: 5px;
+  padding: 1px;
 }
 
 .display-pad--body {
@@ -180,7 +180,7 @@ canvas {
   top: 0;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 1px;
   box-shadow: 0 0 5px rgba(5, 0, 0, 0.02) inset;
 }
 .container{
