@@ -146,10 +146,10 @@ canvas {
   position: relative;
   display: block;
   float: right;
-  margin: auto;
+  margin: 0px;
   padding: 0px;
-  top: 10%;
-  transform: translateY(-100%);
+  top: 1%;
+  transform: translateY(-50%);
 }
 
 .display-pad {
