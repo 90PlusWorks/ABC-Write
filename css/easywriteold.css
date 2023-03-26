@@ -149,7 +149,7 @@ canvas {
   margin: 0px;
   padding: 0px;
   top: 1%;
-  transform: translateY(-1%);
+  transform: translateY(-50%);
 }
 
 .display-pad {
