@@ -194,7 +194,7 @@ canvas {
 .splash{
   cursor : pointer;
   position : fixed;
-  top : 70%;
+  top : 20%;
   left : 50%;
   height : 99%;
   width : 95%;
