@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Easy peasy writer</title>
-  <meta name="description" content="Easy Writer - HTML5 canvas based writer.">
+  <title>Pattern writer - Early writing</title>
+  <meta name="description" content="Easy Pattern Writer - HTML5 canvas based writer.">
 
   <meta name="viewport" id='btnClick' content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
 
@@ -15,6 +15,13 @@
 
 <script>src="js/math.js"</script>
     <style>
+      #videoC {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 10%;
+        height: 10%;
+      }
       #signature-pad {
         position: absolute;
         top: 0;
@@ -32,15 +39,21 @@
 </head>
 <body onselectstart="return false" style = "margin: 0;padding: 0;" >
 
+
+
+
+
+
+  <div id="signature-pad" class="signature-pad">
     
 
-    <div id="signature-pad" class="signature-pad" >
-     <div id="signature-pad" class="signature-pad--body">
+    <div id="signature-pad" class="signature-pad--body" >
+        
       
-      
+   
 
-<canvas id="myCanvas" width=100% height=100% style= "position: relative; top: 0; overflow: hidden; border:1px solid #fff; background-color: transparent;margin: 0;padding: 0; ">
-
+<canvas id="myCanvas" width=100% height=100% style= "position: absolute;top: 0; overflow: hidden; border:1px solid #fff; background-color: transparent;margin: 0;padding: 0; ">
+    
 
   
 
@@ -87,15 +100,16 @@ var ctx2 = c2.getContext("2d");
         margin: 0; 
         padding: 0;">
  
-<button id = "button3" onclick="hide2()"  style = " height:30px;width: 10vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #A00;" >Help</button>
-<img id = "animated-image" src = "a/frame000.png" style = "display:inline-block;></img><br>
+<button id = "button1" onclick="copyme()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0; font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #0A0;">Copy</button>
+<button id = "button2" onclick="hide()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #00A;" >Options</button>
+<button id = "button3" onclick="hide2()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #A00;" >Help</button><br><br>.....
+<img id = "animated-image" src = "a/frame000.png"></img><br><br>
 <audio id = "sound" controls style = "filter: sepia(100%) saturate(790%) grayscale(1%) contrast(90%) drop-shadow(8px 8px 5px orange);
-width: 150px; height: 25px;"> <source  src="sounds/a.mp3" type="audio/mpeg">
+width: 150px;
+    height: 25px;">
+  <source  src="sounds/a.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
-</audio>   
-<button id = "button1" onclick="copyme()"  style = "height: 30px;width: 15vw; margin: 0;padding: 0; font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #0A0;">Copy</button>
-<button id = "button2" onclick="hide()"  style = " height: 30px;width: 15vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #00A;" >Options</button>
-
+</audio>     
 
 <div id="instructions">
 
