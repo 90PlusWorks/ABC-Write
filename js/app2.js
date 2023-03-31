@@ -4,6 +4,7 @@ const imagesList = ["/frame000.png", "/frame001.png", "/frame002.png", "/frame00
 let vidNum = 0;
 var currentIndex = 0;
 var animatedImage = document.getElementById("animated-image");
+var colourPen = document.getElementById("colorPen");
 var screenWidth = window.screen.availWidth;
 var screenHeight = window.screen.availHeight;
 var screenHeight2 = window.innerHeight;
@@ -183,6 +184,7 @@ function savePDF() {
 
 
 function colorR(){
+  colourPen.src = "images/S/redPen.png";
   var r =  255;
   var g = 0;
   var b = 0;
@@ -191,6 +193,7 @@ function colorR(){
   signaturePad.penColor = color;
 }
 function colorO(){
+  colourPen.src = "images/S/orangePen.png";
   var r =  255;
   var g = 173;
   var b = 0;
@@ -199,6 +202,7 @@ function colorO(){
   signaturePad.penColor = color;
 }
 function colorY(){
+  colourPen.src = "images/S/yellowPen.png";
   var r =  255;
   var g = 255;
   var b = 0;
@@ -207,6 +211,7 @@ function colorY(){
   signaturePad.penColor = color;
 }
 function colorG(){
+  colourPen.src = "images/S/greenPen.png";
   var r =  20;
   var g = 255;
   var b = 0;
@@ -215,6 +220,7 @@ function colorG(){
   signaturePad.penColor = color;
 }
 function colorBl(){
+  colourPen.src = "images/S/bluePen.png";
   var r =  0;
   var g = 120;
   var b = 255;
@@ -223,6 +229,7 @@ function colorBl(){
   signaturePad.penColor = color;
 }
 function colorP(){
+  colourPen.src = "images/S/purplePen.png";
   var r =  165;
   var g = 0;
   var b = 255;
@@ -231,6 +238,7 @@ function colorP(){
   signaturePad.penColor = color;
 }
 function colorB(){
+  colourPen.src = "images/S/blackPen.png";
   var r =  0;
   var g = 0;
   var b = 0;
@@ -402,7 +410,8 @@ if(document.getElementById('text').value !=" "){
   document.getElementById('text').value = " ";
 
 }
-wrapper2.scrollTo((xpos)-150,(ypos)*scrollY+scrollI);//(ypos)*canvas.height/6*ratio);
+wrapper2.scrollTo((xpos)-250,(ypos)*scrollY+scrollI+600);//(ypos)*canvas.height/6*ratio);
+console.log((ypos)+"yposnow"+(ypos)*scrollY+scrollI+600));
 xpos = xpos + canvas.width/6;
 }
 
