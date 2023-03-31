@@ -52,7 +52,7 @@
       
    
 
-<canvas id="myCanvas" width=100% height=100% style= "position: absolute;top: 0; overflow: hidden; border:1px solid #fff; background-color: transparent;margin: 0;padding: 0; ">
+<canvas id="myCanvas" width=100% height=100% style= "position: relative;top: 0; overflow: hidden; border:1px solid #fff; background-color: transparent;margin: 0;padding: 0; ">
     
 
   
@@ -67,8 +67,7 @@ var ctx = c.getContext("2d"); //the draw/write area
 
 
 
-<div class="display-pad" id="display-pad" style = "position = relative; overflow = auto;
-background: #fff;">
+<div class="display-pad" id="display-pad" style = "position = relative; overflow = auto;background: #fff;">
 
 <canvas class = "containB" id="mydisplay" width= 100% style = "overflow = auto; background-color: transparent;margin: 0;padding: 0;">
     
@@ -101,14 +100,14 @@ var ctx2 = c2.getContext("2d");
         padding: 0;">
  
 <button id = "button1" onclick="copyme()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0; font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #0A0;">Copy</button>
-<button id = "button2" onclick="hide()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #00A;" >Options</button>
-<button id = "button3" onclick="hide2()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #A00;" >Help</button><br><br>.....
-<img id = "animated-image" src = "a/frame000.png" height = "70vh"></img>
-<audio id = "sound" controls style = "display:inline-block;filter: sepia(100%) saturate(790%) grayscale(1%) contrast(90%) drop-shadow(2px 2px 1px orange);
+<button id = "button2" onclick="hide()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #00A;" >Colours-Save PDF</button>
+<button id = "button3" onclick="hide2()"  style = "display:inline-block; width: 32vw; margin: 0;padding: 0;font-face: 'Comic Sans MS'; font-size: larger; color: white; background-color: #A00;" >Help</button>.....
+<a id = "a"><img id = "animated-image" src = "a/frame000.png" height = "60vh"  style = "overflow-x: clip; overflow-clip-margin: 20px; display:inline-block;"></img>
+<audio id = "sound" controls style = "overflow-x: clip; overflow-clip-margin: 20px; display:inline-block;filter: sepia(100%) saturate(790%) grayscale(1%) contrast(90%) drop-shadow(2px 2px 1px orange);
 width: 100px; height: 10px;">
   <source  src="sounds/a.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
-</audio>     
+</audio> </a>    <br>
 
 <div id="instructions">
 
@@ -116,13 +115,15 @@ width: 100px; height: 10px;">
         background-color: #fff;
         position: absolute;
         left: 0; 
-        height: 100%; 
+        height: 100%;
+        width:80%;
         display: none;
         margin: 0; 
         padding: 0;">
   <textarea id='text' text-size-adjust=none display=none style = "display:inline-block;"></textarea>  
             <canvas id='textCanvas' height=20 style = "display:inline-block;"></canvas>
             <img src="images/S/Delete.png" onclick = "clearme()" data-action = "clear" ></img>
+            <img id = "colorPen" src="images/S/blackPen.png" ></img>
            <img src="images/S/Red.png" onclick = "colorR()" ></img>
             <img src="images/S/Orange.png" onclick = "colorO()" ></img>
             <img src="images/S/Yellow.png" onclick = "colorY()" ></img>
@@ -167,7 +168,7 @@ width: 100px; height: 10px;">
   <H1 >
   Click on the HELP button to hide this message.<br>
   Click on the COPY button to copy your writing to the PDF.<br>
-  Click on the OPTIONS button to show or hide additional icons.<br><br>
+  Click on the COLOURS-SAVE PDF button to show or hide additional icons.<br><br>
     Easy-peasy writing tool if you struggle with small writing. <br>
     You write large in the blue area below and click on COPY to move the writing to the top pdf page. <br>
     Use for class, mathematics or any other purpose. Write on your phone or tablet, then press the white check mark or Copy Button to transcribe to the pdf area. <br>
