@@ -9,3 +9,5 @@ Copy patterns from the screen.
 # Save a record in PDF for your teacher.
 #
 This site live at https://90plusworks.github.io/ABC-Write/
+
+run in Kiosk web browser on mobile for full screen!
