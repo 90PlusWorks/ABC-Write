@@ -1,32 +1,190 @@
-<!doctype html>
-<html lang="en">
+​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​```html
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Easy peasy writer</title>
-  <meta name="description" content="Easy Writer - HTML5 canvas based writer and pattern practice.">
-
-  <meta name="viewport" id='btnClick' content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
-
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <style>
-h1 {text-align: center;}
-p {text-align: center;}
-</style>
-
+    <title>Gymnast High Bar Animation</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+        }
+        canvas { width: 100%; height: 100%; }
+    </style>
 </head>
-<h1 style="color:yellow;font-size:30px;font-family: 'comic sans ms';">This is an effective way to learn<br> and keep record of your progress<br> when you learn to write. <br>
-Click on an image to start!</h1> 
+<body>
+    <div id="controls">
+        <select id="moveSelect" multiple size="5">
+            <option value="swing">Basic Swing</option>
+            <option value="kip">Kip Up</option>
+            <option value="giant">Giant Swing</option>
+            <option value="release">Release Move</option>
+        </select>
+        <button onclick="playSequence()">Play Sequence</button>
+    </div>
 
-<body style = "background-color: #335;" onselectstart="return false" style = "margin: 0;padding: 0;" >
-  <center> 
-<a href="indexPat.html"><img src="images/patternss.png"></a>.................
-<a href="indexABC.html"><img src="images/ABCs.png"></a><br><br><br>
- </center>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-<a href="https://github.com/90PlusWorks/ABC-Write"><p style="color:yellow;font-size:20px;font-family: 'comic sans ms';">Free and open source software at:<br> https://github.com/90PlusWorks/ABC-Write</p></a>
-    
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        directionalLight.position.set(0, 1, 1);
+        scene.add(directionalLight);
 
+        // High bar
+        const barGeometry = new THREE.CylinderGeometry(0.1, 0.1, 4, 32);
+        const barMaterial = new THREE.MeshBasicMaterial({ color: 0x808080 });
+        const bar = new THREE.Mesh(barGeometry, barMaterial);
+        bar.position.y = 3;
+        scene.add(bar);
+
+        // Gymnast body parts with muscle groups
+        const gymnast = new THREE.Group();
+        const defaultMaterial = new THREE.MeshPhongMaterial({ color: 0xaaaaaa });
+        const activeMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+
+        // Torso
+        const torsoGeometry = new THREE.BoxGeometry(0.5, 1, 0.3);
+        const torso = new THREE.Mesh(torsoGeometry, defaultMaterial);
+        gymnast.add(torso);
+
+        // Arms
+        const armGeometry = new THREE.BoxGeometry(0.2, 0.8, 0.2);
+        const leftArm = new THREE.Mesh(armGeometry, defaultMaterial);
+        leftArm.position.set(-0.35, 0.3, 0);
+        gymnast.add(leftArm);
+        const rightArm = new THREE.Mesh(armGeometry, defaultMaterial);
+        rightArm.position.set(0.35, 0.3, 0);
+        gymnast.add(rightArm);
+
+        // Legs
+        const legGeometry = new THREE.BoxGeometry(0.2, 1, 0.2);
+        const leftLeg = new THREE.Mesh(legGeometry, defaultMaterial);
+        leftLeg.position.set(-0.15, -0.5, 0);
+        gymnast.add(leftLeg);
+        const rightLeg = new THREE.Mesh(legGeometry, defaultMaterial);
+        rightLeg.position.set(0.15, -0.5, 0);
+        gymnast.add(rightLeg);
+
+        scene.add(gymnast);
+        gymnast.position.y = 1.5;
+
+        // Camera controls
+        camera.position.set(0, 3, 5);
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        renderer.domElement.addEventListener('mousedown', (e) => {
+            isDragging = true;
+        });
+        renderer.domElement.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaMove = {
+                    x: e.clientX - previousMousePosition.x,
+                    y: e.clientY - previousMousePosition.y
+                };
+                const rotationSpeed = 0.005;
+                gymnast.rotation.y += deltaMove.x * rotationSpeed;
+                camera.position.y += deltaMove.y * rotationSpeed;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+        renderer.domElement.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        renderer.domElement.addEventListener('mousemove', (e) => {
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+
+        // Animation sequences
+        const animations = {
+            swing: (t) => {
+                gymnast.rotation.z = Math.sin(t) * Math.PI/2;
+                leftArm.material = rightArm.material = Math.sin(t) > 0 ? activeMaterial : defaultMaterial; // Arms active
+                torso.material = defaultMaterial;
+                leftLeg.material = rightLeg.material = defaultMaterial;
+            },
+            kip: (t) => {
+                gymnast.rotation.z = Math.sin(t) * Math.PI;
+                torso.material = Math.sin(t) > 0 ? activeMaterial : defaultMaterial; // Core active
+                leftArm.material = rightArm.material = activeMaterial; // Arms always active
+                leftLeg.material = rightLeg.material = defaultMaterial;
+            },
+            giant: (t) => {
+                gymnast.rotation.z = t * Math.PI * 2;
+                leftArm.material = rightArm.material = activeMaterial; // Arms always active
+                torso.material = Math.abs(Math.sin(t)) > 0.5 ? activeMaterial : defaultMaterial; // Core intermittent
+                leftLeg.material = rightLeg.material = defaultMaterial;
+            },
+            release: (t) => {
+                gymnast.rotation.z = t * Math.PI * 4;
+                gymnast.position.y = 1.5 + Math.sin(t * Math.PI) * 2;
+                leftArm.material = rightArm.material = activeMaterial; // Arms always active
+                torso.material = activeMaterial; // Core always active
+                leftLeg.material = rightLeg.material = Math.sin(t) > 0 ? activeMaterial : defaultMaterial; // Legs intermittent
+            }
+        };
+
+        // Animation control
+        let sequence = [];
+        let currentMove = 0;
+        let time = 0;
+        let isPlaying = false;
+
+        function playSequence() {
+            sequence = Array.from(document.getElementById('moveSelect').selectedOptions).map(opt => opt.value);
+            currentMove = 0;
+            time = 0;
+            isPlaying = true;
+            resetMaterials();
+        }
+
+        function resetMaterials() {
+            torso.material = leftArm.material = rightArm.material = 
+            leftLeg.material = rightLeg.material = defaultMaterial;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (isPlaying && sequence.length > 0) {
+                time += 0.02;
+                const move = sequence[currentMove];
+                animations[move](time);
+
+                if (time >= 1) {
+                    time = 0;
+                    currentMove++;
+                    if (currentMove >= sequence.length) {
+                        isPlaying = false;
+                        resetMaterials();
+                    }
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
-
 </html>
+```
